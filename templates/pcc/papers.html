@@ -1,0 +1,11 @@
+<div class="container">
+	{% csrf_token %} {%for paper in papers %}
+	<div class="card card-block">
+		<h3 class="card-title">{{paper.title}}</h3>
+		<p class="card-text" style="word-break: break-word;">by <a href="#">{{paper.author.first_name}} {{paper.author.last_name}}</a></p>
+		<p class="card-text" style="word-break: break-word;">{{paper.abstract}}</p>
+		<p class="card-text" style="word-break: break-word;">(version
+			{{paper.version}} | submitted on {{paper.submission_date}})</p>
+	</div>
+	{%endfor%}
+</div>

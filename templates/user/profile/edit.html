@@ -1,0 +1,54 @@
+{% load staticfiles %}
+{% include base %}
+
+<div class="container-fluid">
+    <div class="center-block" style="width:500px;">
+        <div class="panel panel-primary" style="border-color: #92daf4;">
+            <div class="panel-heading" style="background-color: #92daf4;">
+                <div class="center-align">
+                    <h4>Edit Profile</h4>
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <body>
+                {% block content %}
+                <div class="container">
+                    <h3>Edit Profile</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        <p><label for="id_first_name">First name:</label>
+                            <input id="id_first_name" maxlength="30" name="first_name"
+                                   type="text" value="{{ user.first_name }}">
+                            {{ user.first_name.errors }}</p>
+                        <p><label for="id_last_name">Last name:</label>
+                            <input id="id_last_name" maxlength="30" name="last_name"
+                                   type="text" value="{{ user.last_name }}">{{ user.last_name.errors }}</p>
+                        <p><label for="id_street_line_1">Street_line_1:</label>
+                            <input id="id_street_line_1" maxlength="30"
+                                   name="street_line_1" type="text"
+                                   value="{{ user.street_line_1 }}">{{ user.street_line_1.errors }}</p>
+                        <p><label for="id_street_line_2">Street_line_2:</label>
+                            <input id="id_street_line_2" maxlength="30"
+                                   name="street_line_2" type="text"
+                                   value="{{ user.street_line_2 }}">{{ user.street_line_2.errors }}</p>
+                        <p><label for="id_city">City:</label>
+                            <input id="id_city" maxlength="30" name="city" type="text"
+                                   value="{{ user.city }}">{{ user.city.errors }}</p>
+                        <p><label for="id_state">State:</label>
+                            <input id="id_state" maxlength="30" name="state" type="text"
+                                   value="{{ user.state }}">{{ user.state.errors }}</p>
+                        <p><label for="id_zip_code">Zip code:</label>
+                            <input id="id_zip_code" name="zip_code" type="number"
+                                   value="{{ user.zip_code }}">{{ user.zip_code.errors }}</p>
+                        <p><label for="id_phone_number">Phone number:</label>
+                            <input id="id_phone_number" maxlength="15"
+                                   name="phone_number" type="text"
+                                   value="{{ user.phone_number }}">{{ user.phone_number.errors }}</p>
+                        <input type="submit" class=" btn btn-primary" value="Update">
+                    </form>
+                </div>
+                {% endblock %}
+                </body>
+            </div>
+            </html>

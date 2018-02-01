@@ -1,0 +1,19 @@
+{% load staticfiles %}
+{% include 'pcc/base.html' %}
+
+{% block content %}
+<div class="container">
+	{% csrf_token %} {%for paper in papers %}
+	<div class="card card-block">
+		<h3 class="card-title">{{paper.title}}</h3>
+		<p class="card-text" style="word-break: break-word;">by <a href="#">{{paper.author.first_name}} {{paper.author.last_name}}</a></p>
+		<p class="card-text" style="word-break: break-word;">{{paper.abstract}}</p>
+		<p class="card-text" style="word-break: break-word;">(version
+			{{paper.version}} | submitted on {{paper.submission_date}})</p>
+        <div id="assign_paper">
+				<a href="{% url 'ratepaper' paper.id %}" class="btn btn-default">Rate Paper</a>
+        </div>
+	</div>
+	{%endfor%}
+</div>
+{% endblock %}

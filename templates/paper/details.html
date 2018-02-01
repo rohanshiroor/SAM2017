@@ -1,0 +1,9 @@
+{% if paper %}
+    <h4>{{ title_right }}</h4>
+    <div class="card card-block paper-active">
+        <h4 class="card-title">{{ paper.title }}</h4>
+        <p class="card-text">{{ paper.abstract }}</p>
+        <p class="card-text">(version        {{ paper.version }} | last updated on {{ paper.submission_date }})</p>
+        <a href="/papers/{{ paper.id }}/update" class="card-link">Update</a>
+    </div>
+{% endif %}

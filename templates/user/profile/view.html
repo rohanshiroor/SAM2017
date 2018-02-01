@@ -1,0 +1,45 @@
+{% load staticfiles %}
+{% include base %}
+
+<body>
+	{% block content %}
+	<div class="container">
+		<div>
+			<div class="row">
+     <div class='col-sm-8 col-sm-offset-2'>
+		<div class="list-group">
+		 <button type="button"class="list-group-item list-group-item-action active"><h2>Your Account Information</h2></button>
+
+				<button type="button"class="list-group-item list-group-item-action">Email Address:
+					<td>{{ username }}</td>
+				</button>
+		 <button type="button"class="list-group-item list-group-item-action">First Name:
+					<td>{{ first_name }}</td>
+		 </button>
+		 <button type="button"class="list-group-item list-group-item-action">Last Name:
+					<td>{{ last_name }}</td>
+		 </button>
+
+					<button type="button"class="list-group-item list-group-item-action">Address:
+					<td>{{ address }}</td>
+					</button>
+					<button type="button"class="list-group-item list-group-item-action">Phone Number:
+					<td>{{ phone_number }}</td>
+					</button>
+		</div>
+		 <h2>Want to change Profile? Click Here</h2>
+			<p>
+				<input type="button" class=" btn btn-primary" value="Edit Profile" onclick="editProfile()" />
+			</p>
+		</div>
+	</div>
+
+	{% endblock %}
+
+{% block javascript %}
+<script>
+	function editProfile() {
+		document.location.href = "edit";
+	}
+</script>
+{% endblock %}

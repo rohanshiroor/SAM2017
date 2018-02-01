@@ -1,0 +1,36 @@
+{% load staticfiles %}
+{% include 'pcm/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>Assigned Papers</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>Choose Papers for Reviewing</h4>
+                {% for paper in papers %}
+                    <div class="card card-block paper-{{ paper.state }}"
+                         onclick="document.location.href='/papers/choose/{{ paper.id }}/'">
+                        <h4 class="card-title">{{ paper.title }}</h4>
+                        <h4 class="card-title">{{ paper.author }}</h4>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-sm-6">
+                {% if paper %}
+                    <h4>{{ title_right }}</h4>
+                    <div class="card card-block paper-active">
+                        <h4 class="card-title">{{ paper.title }}</h4>
+                        <p class="card-text">{{ paper.author }}</p>
+                        <form method="POST" class="post-form" onsubmit="location.reload(true)">{% csrf_token %}
+                            {% if paper.is_requested %}
+                                <button type="submit" name="cancel">Cancel Review Request</button>
+                            {% else %}
+                                <button type="submit" name="request">Request to review</button>
+                            {% endif %}
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

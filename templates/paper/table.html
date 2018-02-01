@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SAM 2017</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+		function openPaperInfo(id){
+			window.location = "/pcc/paper/" + id
+		}
+    </script>
+</head>
+<body>
+	<div class="container">
+		{% csrf_token %}
+		<table class="table table-striped">
+			{%for paper in papers %}
+			<tr onclick="openPaperInfo({{paper.id}})">
+				<td>{{paper.title}}</td>
+				<td>{{paper.version}}</td>
+				{% if show_author %}<td>{{paper.author}}</td> {% endif %}
+				<td>{{paper.submission_date}}</td>
+			</tr>
+			{%endfor%}
+		</table>
+	</div>
+</body>

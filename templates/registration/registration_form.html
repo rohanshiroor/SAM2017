@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row">
+    <div class='col-sm-6 col-sm-offset-3'>
+        <h2>Registration</h2>
+
+        <form class="form-horizontal" action="/accounts/register/" method=post>
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            <div class="form-group {% if form.username.errors %} has-error {% endif %} ">
+                <label for="{{ form.username.id_for_label }}"
+                       class="col-sm-2 control-label">Email:</label>
+                <div class="col-sm-6">
+                    <input type="email" class="form-control" id="{{ form.username.id_for_label }}"
+                           name="username"
+                           placeholder="Email" value="">
+                </div>
+                {{ form.username.errors}}
+            </div>
+
+            <div class="form-group {% if form.password1.errors %} has-error {% endif %}">
+                <label for="{{ form.password1.id_for_label }}"
+                       class="col-sm-2 control-label">Password:</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" id="{{ form.password1.id_for_label }}"
+                           name="password1"
+                           placeholder="Password">
+                </div>
+                {{ form.password1.errors}}
+            </div>
+
+            <div class="form-group {% if form.password2.errors %} has-error {% endif %}">
+                <label for="{{ form.password2.id_for_label }}" class="col-sm-2 control-label">Confirm
+                    Password:</label>
+                <div class="col-sm-6">
+                    <input type="password" class="form-control" id="{{ form.password2.id_for_label }}"
+                           name="password2"
+                           placeholder="Retype Password">
+                </div>
+                {{ form.password2.errors}}
+            </div>
+
+            <div class="form-group {% if form.first_name.errors %}has-error{% endif %}">
+                <label for="{{ form.first_name.id_for_label }}" class="col-sm-2 control-label">First
+                    Name:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="{{ form.first_name.id_for_label }}"
+                           name="first_name"
+                           placeholder="First Name">
+                </div>
+                 {{  form.first_name.errors }}
+            </div>
+
+            <div class="form-group{% if form.last_name.errors %} has-error {% endif %}">
+                <label for="{{ form.last_name.id_for_label }}" class="col-sm-2 control-label">Last
+                    Name:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="{{ form.last_name.id_for_label }}"
+                           name="last_name"
+                           placeholder="Last Name">
+                </div>
+            {{ form.last_name.errors}}
+
+            </div>
+
+
+            <div class="form-group{% if form.phone_number.errors %} has-error {% endif %}">
+                <label for="{{ form.phone_number.id_for_label }}" class="col-sm-2 control-label">Phone
+                    Number:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="{{ form.phone_number.id_for_label }}"
+                           name="phone_number"
+                           placeholder="+xxxxxxxxxx" value="">
+                </div>
+                {{ form.phone_number.errors }}
+            </div>
+
+            <div class="form-group{% if form.street_line_1.errors %} has-error {% endif %}">
+                <label for="{{ form.street_line_1.id_for_label }}" class="col-sm-2 control-label">Street
+                    Address 1:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="{{ form.street_line_1.id_for_label }}"
+                           name="street_line_1"
+                           placeholder="street address" value="">
+                </div>
+                {{ form.street_line_1.errors }}
+
+            </div>
+
+            <div class="form-group{% if form.street_line_2.errors %} has-error {% endif %}">
+                <label for="{{ form.street_line_2.id_for_label }}" class="col-sm-2 control-label">Street
+                    Address 2:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="{{ form.street_line_2.id_for_label }}"
+                           name="street_line_2"
+                           placeholder="street address" value="">
+                </div>
+                {{ form.street_line_2.errors }}
+
+            </div>
+
+            <div class="form-group{% if form.city.errors %} has-error {% endif %}">
+                <label for="{{ form.city.id_for_label }}" class="col-sm-2 control-label">City:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="{{ form.city.id_for_label }}"
+                           name="city"
+                           placeholder="city" value="">
+                </div>
+                {{ form.city.errors }}
+
+            </div>
+
+            <div class="form-group{% if form.state.errors %} has-error {% endif %}">
+                <label for="{{ form.state.id_for_label }}" class="col-sm-2 control-label">State:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="{{ form.state.id_for_label }}"
+                           name="state"
+                           placeholder="state" value="">
+                </div>
+                {{ form.state.errors }}
+            </div>
+
+            <div class="form-group{% if form.zip_code.errors %} has-error {% endif %}">
+                <label for="{{ form.zip_code.id_for_label }}" class="col-sm-2 control-label">Zip
+                    Code:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="{{ form.zip_code.id_for_label }}"
+                           name="zip_code"
+                           placeholder="zip code" value="">
+                </div>
+                {{ form.zip_code.errors }}
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block"  value="Register">Register</button>
+                </div>
+            </div>
+            <input type="hidden" name="next" value="{{ next }}"/>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

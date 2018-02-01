@@ -1,0 +1,28 @@
+<header>
+    <div class="navbar-wrapper">
+        <div class="container-fluid">
+            <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar_main">
+                <div class="navbar-header" id="navbar_left">
+                    <a class="navbar-brand" href="#">SAM 2017</a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar_right">
+                    <ul class="nav navbar-nav navbar-right">
+                    	{% if username %}
+                    		<li><a href="#">Hello {{ username }}!</a></li>
+                    	{% endif %}
+                        {% for item in nav_links %}
+					    	<li><a href="http://localhost:8000/{{ item.link }}">{{ item.title }}</a></li>
+					    {% endfor %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+{% block content %}
+	<div class="btn-group btn-group-justified">
+	{% for button in buttons %}
+		<a href="http://localhost:8000/{{ button.link }}" class="btn btn-primary">{{ button.title }}</a>
+	{% endfor %}
+	</div>
+{% endblock %}

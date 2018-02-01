@@ -1,0 +1,26 @@
+{% block content %}
+<div class="container-fluid">
+    <div class="center-block" style="width:550px;">
+        <div class="panel panel-primary" style="border-color: #92daf4;">
+            <div class="panel-heading" style="background-color: #92daf4;">
+                <div class="center-align">
+                    <h4>Submit Paper</h4>
+                </div>
+            </div>
+            <div class="panel-body">
+
+    <form action="" method="post" enctype="multipart/form-data">
+        <table>
+            {% csrf_token %}
+            {% for field in form %}
+                <tr>
+                    <td><p>{{ field.label_tag }}</p></td>
+                    <td><p>{{ field }}</p></td>
+                    <td>{{ field.errors }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" class=" btn btn-primary " value="Save"/>
+    </form>
+</div>
+            {% endblock %}

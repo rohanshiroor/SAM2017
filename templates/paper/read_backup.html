@@ -1,0 +1,73 @@
+{% load staticfiles %}
+{% include 'user/base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SAM 2017</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+{% block content %}
+	<div class="container">
+		<br>
+		<form action="" method="post" class="form-horizontal">
+			{% csrf_token %}
+			<div class="form-group">
+				<label>Title</label>
+				<p class="form-control-static">{{paper.title}}</p>
+			</div>
+			<div class="form-group">
+				<label>Author</label>
+				<p class="form-control-static">{{paper.author}}</p>
+			</div>
+			<div class="form-group">
+				<label>Submission Date</label>
+				<p class="form-control-static">{{paper.submission_date}}</p>
+			</div>
+			<div class="form-group">
+				<label>Version</label>
+				<p class="form-control-static">{{paper.version}}</p>
+			</div>
+			<div class="form-group">
+				<label>PCM</label>
+				<select class="form-control">
+					<option disabled selected value> -- select an option -- </option>
+					{% for person in persons %}
+						<option value="{{person.username}}">{{person.username}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				<label>PCM</label>
+				<select class="form-control">
+					<option disabled selected value> -- select an option -- </option>
+					{% for person in persons %}
+						<option value="{{person.username}}">{{person.username}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				<label>PCM</label>
+				<select class="form-control">
+					<option disabled selected value> -- select an option -- </option>
+					{% for person in persons %}
+						<option value="{{person.username}}">{{person.username}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<input type="submit" value="Update" />
+		</form>
+	</div>
+{% endblock %}
+</body>
+</html>
+
+{% block javascript %} {% endblock %}

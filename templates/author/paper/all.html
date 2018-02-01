@@ -1,0 +1,22 @@
+
+<h3>Papers Submitted by You</h3>
+{% for paper in papers %}
+  <div class="container">
+<table class=" table table-bordered">
+    <tbody>
+    <div class="list-group-{{ paper.state }}">
+        <a href="/papers/{{ paper.id }}/"class="list-group-paper list-group-paper-action active">
+        <h4 class="list-group-paper-title">{{ paper.title }}</h4>
+        <p class="list-group-paper-summary">{{ paper.abstract }}</p>
+        <p class="clist-group-paper-summary">(version
+            {{ paper.version }} | last updated on {{ paper.submission_date }})</p>
+            {% if paper.rate %}
+                <p class="list-group-paper-summary">Final Rating: {{ paper.rate }}</p>
+            {% endif %}
+        </a>
+    </div>
+    </tbody>
+    </table>
+  </div>
+{% endfor %}
+

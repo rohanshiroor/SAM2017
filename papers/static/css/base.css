@@ -1,0 +1,59 @@
+.btn {
+	padding: 15px 12px;
+}
+
+.btn-primary {
+    background-color: gray;
+    border-color: gray;
+}
+
+.navbar-inverse {
+	background-color: black;
+}
+
+body {
+	background-color: white;
+}
+
+label {
+	color: black;
+}
+
+th {
+	text-align: center;
+	color: black;
+}
+
+td {
+	text-align: center;
+	color: black;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: lightgray;
+}
+
+.form-control-static {
+	background: white;
+	border-radius: 3px;
+}
+
+.paper-table-row {
+	font-size: 15px;
+}
+
+p.paper-summary {
+	word-break: break-word;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+div.paper-active {
+    background: lightgrey;
+}
+
+div.paper-inactive {
+    cursor: pointer;
+    background: white;
+}

@@ -1,0 +1,8 @@
+<h4>Papers assigned</h4>
+{% for paper in papers %}
+    <div class="card card-block paper-{{ paper.state }}" onclick="document.location.href='/papers/assigned/{{ paper.id }}/'">
+        <h4 class="card-title">{{ paper.title }}</h4>
+        <p class="card-text paper-summary">{{ paper.abstract }}</p>
+        <p class="card-text paper-summary">(version {{ paper.version }} | last updated on {{ paper.submission_date }})</p>
+    </div>
+{% endfor %}

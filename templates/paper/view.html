@@ -1,0 +1,16 @@
+{% load staticfiles %}
+{% include base %}
+
+{% block content %}
+    <div class="container">
+        <h2>Welcome to SAM2017</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                {% include 'author/paper/all.html' %}
+            </div>
+            <div class="col-sm-6">
+                {% include 'author/paper/details.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+
+<link href="/static/css/mainpage.css" rel="stylesheet">
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	           <div class="row">
+                 <div class="col-sm-6 col-md-4 col-md-offset-4">
+
+                   </div>
+	               <div class="col-lg-4">
+                        <div class="jumbotron">
+	                   <div class="intro-message" id="login">
+	                       <h2>SAM 2017</h2>
+	                       <hr class="intro-divider">
+	                       <div class="form">
+
+	                       	<p class="bg-danger"><small><em></em></small></p>
+
+                        </div>
+                       </div>
+
+
+    {% if form.errors %}
+
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+		<p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+    {% else %}
+    {% endif %}
+{% endif %}
+           <div>
+                <div>
+                    <h3>Please Sign In</h3>
+                </div>
+                <div>
+
+                    <form class="form-horizontal" method=post>{% csrf_token %}
+                          <div class="form-group">
+                            <label for="id_username" class="col-md-4 control-label">{{ form.username.label_tag }}</label>
+                                  <div class="col-sm-10">
+                                <input type="email" class="form-control" id="id_username" name="username" placeholder="Email">
+                        <!--{{ form.username }}-->
+                                  </div>
+                          </div>
+                <div class="form-group">
+                    <label for="id_password" class="col-sm-4 control-label">Password:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="id_password" name="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset col-sm-8">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" value="login">Sign in</button>
+
+                    </div>
+                </div>
+                <input type="hidden" name="next" value="{{ next }}"/>
+
+            </form>
+
+{% endblock %}
+
+{% block javascript %}
+
+
+<script>
+{% if not user.is_authenticated %}
+{% endif %}
+</script>
+
+{% endblock %}

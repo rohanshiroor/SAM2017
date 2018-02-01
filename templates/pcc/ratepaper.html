@@ -1,0 +1,68 @@
+{% load staticfiles %}
+{% include 'pcc/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                {% if paper %}
+                    <div class="row">
+                        <h3>Paper #{{ paper.id }}</h3>
+                    </div>
+                    <div class="row">
+                        <strong>Paper</strong><br>
+                        {{ paper.title }}<br>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <strong>Abstract</strong><br>
+                        {{ paper.abstract }}<br>
+                        <br>
+                    </div>
+                    <div class="row">
+                        version <strong>{{ paper.version }}</strong> | last updated on <strong>{{ paper.submission_date }}</strong>
+                        <br>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="col-sm-6">
+                {% if paper %}
+                    <div class="row">
+                        <h3>Review</h3>
+                    </div>
+                    {% if reviews %}
+                    {% for review in reviews %}
+                    <div>
+			        <label for="reviewer">PCM:</label>
+			        <input type="text" id="reviewer" value="{{review.reviewer}}" readonly>
+		            </div>
+                    <div>
+			        <label for="reviews">Reviews:</label>
+			        <input type="text" id="reviews" value="{{review.comment}}" readonly>
+		            </div><div>
+			        <label for="reviews">PCM Raings:</label>
+			        <input type="text" id="reviews" value="{{review.rate}}" readonly>
+		            </div>
+                    {% endfor %}
+
+                    <form method="post">{% csrf_token %}
+
+                        <div class="row">
+                            <label for="id_rate">Rate:</label><br>
+                            <input id="id_rate" type="number" name="rate" value="{{ rate }}" /><br>
+                            <br>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="btn btn-primary btn-block" value="Submit Ratings">
+                                Submit Ratings
+                            </button>
+                        </div>
+                    </form>
+                    {% else %}
+                    There are no reviews for this Paper
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
